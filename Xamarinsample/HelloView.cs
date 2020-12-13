@@ -8,6 +8,10 @@ namespace Xamarinsample
 	{
 		readonly State<int> clicks = new(0);
 
-		public View Body =>	Button($"Clicked {clicks.Value} times", () => clicks.Value++);
+		public View Body => ViewBuilder.BuildBlock<Button<Text>, Text>(
+			Button($"Clicked {clicks.Value} times",
+				() => clicks.Value++
+			), new Text("Test")
+		);
 	}
 }
